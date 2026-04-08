@@ -35,6 +35,28 @@ npm run reset-project
 
 This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
+## Tutorials
+
+This project includes comprehensive tutorials covering React Native frontend development:
+
+### Core Fundamentals (5 Tutorials)
+
+1. **Components & Styling** - Learn basic components and styling in React Native
+2. **State Management** - Master useState hook and local state management
+3. **Hooks & Effects** - Deep dive into useEffect and other custom hooks
+4. **Lists & Performance** - Render efficient lists with FlatList and optimization techniques
+5. **Navigation** - Navigate between screens with Expo Router
+
+### Advanced Topics (Coming Soon)
+
+- **Networking & API Integration** - HTTP requests, fetch patterns, and data management
+- **Forms & Validation** - Form handling, input validation, and user input patterns
+- **Storage & Persistence** - AsyncStorage, local data persistence, and state persistence
+- **Mobile Features** - Camera, photo library, permissions, location, and push notifications
+- **Advanced UI** - Animations, gestures, bottom sheets, modals, and custom layouts
+- **Real-World Patterns** - Error handling, debugging, testing, and authentication flows
+- **Performance** - Optimization techniques, profiling, and best practices
+
 ## Learn more
 
 To learn more about developing your project with Expo, look at the following resources:
