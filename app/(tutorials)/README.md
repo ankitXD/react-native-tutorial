@@ -69,6 +69,20 @@ Navigate between screens using Expo Router.
 
 **File**: `05-navigation.tsx`
 
+### 6. **Networking & API Integration** (Intermediate)
+
+Learn to fetch data from APIs and handle network requests.
+
+- **Topics**: fetch(), HTTP Methods, Error Handling, Real APIs, Timeouts
+- **What You'll Learn**:
+  - Making HTTP requests with fetch()
+  - Handling loading and error states
+  - Processing JSON responses
+  - Best practices for API integration
+  - Real-world examples with free APIs
+
+**File**: `06-networking-api-integration.tsx`
+
 ## 🎯 How to Use These Tutorials
 
 1. **Start with the Tutorials Index** (`index.tsx`)

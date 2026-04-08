@@ -48,6 +48,13 @@ const TOPICS: Topic[] = [
     color: "#F38181",
     route: "/(tutorials)/05-navigation",
   },
+  {
+    id: "6",
+    title: "Networking & API Integration",
+    description: "Learn to fetch data from APIs and integrate with real-world services",
+    color: "#95E1D3",
+    route: "/(tutorials)/06-networking-api-integration",
+  },
 ];
 
 export default function HomeScreen() {

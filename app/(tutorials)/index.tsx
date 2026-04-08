@@ -71,12 +71,28 @@ const TUTORIALS: Tutorial[] = [
     color: "#F38181",
     routePath: "/(tutorials)/05-navigation",
   },
+  {
+    id: "6",
+    title: "Networking & API Integration",
+    description:
+      "Learn to fetch data from APIs and integrate with real-world services",
+    topics: [
+      "fetch()",
+      "HTTP Methods",
+      "Error Handling",
+      "Real APIs",
+      "Data Processing",
+    ],
+    difficulty: "Intermediate",
+    color: "#AA96DA",
+    routePath: "/(tutorials)/06-networking-api-integration",
+  },
 ];
 
 export default function TutorialsIndex() {
   const router = useRouter();
   const colorScheme = useColorScheme();
-  const isLight = colorScheme === "light";
+  const isLight = colorScheme !== "dark";
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -92,7 +108,7 @@ export default function TutorialsIndex() {
   };
 
   const handleTutorialPress = (tutorial: Tutorial) => {
-    router.push(tutorial.routePath);
+    router.push(tutorial.routePath as any);
   };
 
   return (
@@ -231,7 +247,7 @@ export default function TutorialsIndex() {
           <ThemedText type="subtitle">Tips for Learning</ThemedText>
 
           <Text style={styles.tipText}>
-            💡 Read the code comments - they explain what's happening
+            💡 Read the code comments - they explain what&apos;s happening
           </Text>
           <Text style={styles.tipText}>
             💡 Interact with examples - buttons, inputs, etc.
