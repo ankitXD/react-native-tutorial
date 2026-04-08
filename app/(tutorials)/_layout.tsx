@@ -1,8 +1,8 @@
-import { Stack } from 'expo-router';
+import { Stack } from "expo-router";
 
 /**
  * Tutorials Layout
- * 
+ *
  * This layout file defines the navigation structure for all tutorials.
  * - Index page shows the list of all tutorials
  * - Each tutorial is a separate screen
@@ -15,8 +15,8 @@ export default function TutorialsLayout() {
       <Stack.Screen
         name="index"
         options={{
-          title: 'Tutorials',
-          headerShown: true,
+          title: "Tutorials",
+          headerShown: false,
         }}
       />
 
@@ -24,40 +24,40 @@ export default function TutorialsLayout() {
       <Stack.Screen
         name="01-components-styling"
         options={{
-          title: 'Components & Styling',
-          headerBackTitle: 'Back',
+          title: "Components & Styling",
+          headerShown: false,
         }}
       />
 
       <Stack.Screen
         name="02-state-management"
         options={{
-          title: 'State Management',
-          headerBackTitle: 'Back',
+          title: "State Management",
+          headerShown: false,
         }}
       />
 
       <Stack.Screen
         name="03-hooks-and-effects"
         options={{
-          title: 'Hooks & Effects',
-          headerBackTitle: 'Back',
+          title: "Hooks & Effects",
+          headerShown: false,
         }}
       />
 
       <Stack.Screen
         name="04-lists-and-performance"
         options={{
-          title: 'Lists & Performance',
-          headerBackTitle: 'Back',
+          title: "Lists & Performance",
+          headerShown: false,
         }}
       />
 
       <Stack.Screen
         name="05-navigation"
         options={{
-          title: 'Navigation',
-          headerBackTitle: 'Back',
+          title: "Navigation",
+          headerShown: false,
         }}
       />
     </Stack>

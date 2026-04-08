@@ -1,11 +1,19 @@
-import { StyleSheet, View, Text, ScrollView, Pressable, TextInput } from 'react-native';
-import { useState, useEffect, useCallback } from 'react';
-import { ThemedView } from '@/components/themed-view';
-import { ThemedText } from '@/components/themed-text';
+import { ThemedText } from "@/components/themed-text";
+import { ThemedView } from "@/components/themed-view";
+import { useCallback, useEffect, useState } from "react";
+import {
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 /**
  * TUTORIAL 3: Hooks & Side Effects
- * 
+ *
  * This tutorial teaches you:
  * - What are React Hooks
  * - useEffect for side effects
@@ -15,7 +23,7 @@ import { ThemedText } from '@/components/themed-text';
 
 export default function HooksAndEffectsTutorial() {
   // EXAMPLE 1: useEffect for data fetching simulation
-  const [data, setData] = useState<string>('');
+  const [data, setData] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [renderCount, setRenderCount] = useState(0);
 
@@ -28,13 +36,13 @@ export default function HooksAndEffectsTutorial() {
   const [seconds, setSeconds] = useState(0);
 
   // EXAMPLE 4: InputField with useCallback
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   // useEffect Example 1: Runs once on component mount
   useEffect(() => {
-    console.log('Component mounted!');
+    console.log("Component mounted!");
     return () => {
-      console.log('Component unmounting!');
+      console.log("Component unmounting!");
     };
   }, []); // Empty dependency array = run only on mount
 
@@ -49,7 +57,7 @@ export default function HooksAndEffectsTutorial() {
 
     if (timerRunning) {
       interval = setInterval(() => {
-        setSeconds(s => s + 1);
+        setSeconds((s) => s + 1);
       }, 1000);
     }
 
@@ -70,20 +78,21 @@ export default function HooksAndEffectsTutorial() {
         setLoading(false);
       }, 500);
     } else {
-      setData('');
+      setData("");
     }
   }, []);
 
   return (
-    <ScrollView style={styles.container}>
-      <ThemedView style={styles.section}>
-        <ThemedText type="title">Hooks & Side Effects</ThemedText>
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView style={styles.container}>
+        <ThemedView style={styles.section}>
+          <ThemedText type="title">Hooks & Side Effects</ThemedText>
 
-        {/* SECTION 1: What are Hooks */}
-        <ThemedView style={styles.lessonBox}>
-          <ThemedText type="subtitle">1. What are Hooks?</ThemedText>
-          <ThemedText>
-            {`Hooks are special functions that let you "hook into" React features:
+          {/* SECTION 1: What are Hooks */}
+          <ThemedView style={styles.lessonBox}>
+            <ThemedText type="subtitle">1. What are Hooks?</ThemedText>
+            <ThemedText>
+              {`Hooks are special functions that let you "hook into" React features:
 - useState: Manage local state
 - useEffect: Handle side effects
 - useCallback: Memoize functions
@@ -93,157 +102,172 @@ export default function HooksAndEffectsTutorial() {
 Rules of Hooks:
 1. Only call at top level (not in loops, conditionals)
 2. Only call from React components/custom hooks`}
-          </ThemedText>
-        </ThemedView>
+            </ThemedText>
+          </ThemedView>
 
-        {/* SECTION 2: useEffect Basics */}
-        <ThemedView style={styles.lessonBox}>
-          <ThemedText type="subtitle">2. useEffect - Run Code After Render</ThemedText>
-          <ThemedText>
-            {`useEffect runs after the component renders.
+          {/* SECTION 2: useEffect Basics */}
+          <ThemedView style={styles.lessonBox}>
+            <ThemedText type="subtitle">
+              2. useEffect - Run Code After Render
+            </ThemedText>
+            <ThemedText>
+              {`useEffect runs after the component renders.
 Component rendered {renderCount} times`}
-          </ThemedText>
+            </ThemedText>
 
-          <Pressable
-            style={styles.button}
-            onPress={() => setRenderCount(renderCount + 1)}
-          >
-            <Text style={styles.buttonText}>Trigger Re-render</Text>
-          </Pressable>
+            <Pressable
+              style={styles.button}
+              onPress={() => setRenderCount(renderCount + 1)}
+            >
+              <Text style={styles.buttonText}>Trigger Re-render</Text>
+            </Pressable>
 
-          <ThemedText style={styles.note}>
-            📝 useEffect with empty [] only runs once on mount
-          </ThemedText>
-        </ThemedView>
+            <ThemedText style={styles.note}>
+              📝 useEffect with empty [] only runs once on mount
+            </ThemedText>
+          </ThemedView>
 
-        {/* SECTION 3: useEffect with Dependencies */}
-        <ThemedView style={styles.lessonBox}>
-          <ThemedText type="subtitle">3. useEffect Dependencies</ThemedText>
-          <ThemedText>
-            {`Dependency array controls when effect runs:
+          {/* SECTION 3: useEffect with Dependencies */}
+          <ThemedView style={styles.lessonBox}>
+            <ThemedText type="subtitle">3. useEffect Dependencies</ThemedText>
+            <ThemedText>
+              {`Dependency array controls when effect runs:
 - No array: Run after every render
 - Empty []: Run once on mount
 - [dependency]: Run when dependency changes
 
 Count: {count}
 Squared: {squared}`}
-          </ThemedText>
+            </ThemedText>
 
-          <View style={styles.buttonRow}>
-            <Pressable
-              style={styles.buttonSmall}
-              onPress={() => setCount(count - 1)}
-            >
-              <Text style={styles.buttonText}>-</Text>
-            </Pressable>
-            <Pressable
-              style={styles.buttonSmall}
-              onPress={() => setCount(count + 1)}
-            >
-              <Text style={styles.buttonText}>+</Text>
-            </Pressable>
-          </View>
+            <View style={styles.buttonRow}>
+              <Pressable
+                style={styles.buttonSmall}
+                onPress={() => setCount(count - 1)}
+              >
+                <Text style={styles.buttonText}>-</Text>
+              </Pressable>
+              <Pressable
+                style={styles.buttonSmall}
+                onPress={() => setCount(count + 1)}
+              >
+                <Text style={styles.buttonText}>+</Text>
+              </Pressable>
+            </View>
 
-          <ThemedText style={styles.info}>
-            Notice: Squared updates automatically when count changes
-          </ThemedText>
-        </ThemedView>
+            <ThemedText style={styles.info}>
+              Notice: Squared updates automatically when count changes
+            </ThemedText>
+          </ThemedView>
 
-        {/* SECTION 4: useEffect Cleanup */}
-        <ThemedView style={styles.lessonBox}>
-          <ThemedText type="subtitle">4. useEffect Cleanup (Timer Example)</ThemedText>
-          <ThemedText>
-            {`Return a cleanup function from useEffect to run code on unmount or before re-running.
+          {/* SECTION 4: useEffect Cleanup */}
+          <ThemedView style={styles.lessonBox}>
+            <ThemedText type="subtitle">
+              4. useEffect Cleanup (Timer Example)
+            </ThemedText>
+            <ThemedText>
+              {`Return a cleanup function from useEffect to run code on unmount or before re-running.
 
 Timer: {seconds}s`}
-          </ThemedText>
+            </ThemedText>
 
-          <View style={styles.timerDisplay}>
-            <Text style={styles.timerText}>{seconds}</Text>
-          </View>
+            <View style={styles.timerDisplay}>
+              <Text style={styles.timerText}>{seconds}</Text>
+            </View>
 
-          <Pressable
-            style={[styles.button, timerRunning && styles.buttonActive]}
-            onPress={() => setTimerRunning(!timerRunning)}
-          >
-            <Text style={styles.buttonText}>
-              {timerRunning ? 'Stop Timer' : 'Start Timer'}
-            </Text>
-          </Pressable>
+            <Pressable
+              style={[styles.button, timerRunning && styles.buttonActive]}
+              onPress={() => setTimerRunning(!timerRunning)}
+            >
+              <Text style={styles.buttonText}>
+                {timerRunning ? "Stop Timer" : "Start Timer"}
+              </Text>
+            </Pressable>
 
-          <Pressable
-            style={styles.button}
-            onPress={() => setSeconds(0)}
-          >
-            <Text style={styles.buttonText}>Reset</Text>
-          </Pressable>
+            <Pressable style={styles.button} onPress={() => setSeconds(0)}>
+              <Text style={styles.buttonText}>Reset</Text>
+            </Pressable>
 
-          <ThemedText style={styles.note}>
-            📝 Cleanup function prevents memory leaks by clearing intervals/timeouts
-          </ThemedText>
-        </ThemedView>
+            <ThemedText style={styles.note}>
+              📝 Cleanup function prevents memory leaks by clearing
+              intervals/timeouts
+            </ThemedText>
+          </ThemedView>
 
-        {/* SECTION 5: useCallback */}
-        <ThemedView style={styles.lessonBox}>
-          <ThemedText type="subtitle">5. useCallback - Memoized Functions</ThemedText>
-          <ThemedText>
-            {`useCallback memoizes a function so it's not recreated on every render.
+          {/* SECTION 5: useCallback */}
+          <ThemedView style={styles.lessonBox}>
+            <ThemedText type="subtitle">
+              5. useCallback - Memoized Functions
+            </ThemedText>
+            <ThemedText>
+              {`useCallback memoizes a function so it's not recreated on every render.
 Useful for passing functions to child components.`}
-          </ThemedText>
+            </ThemedText>
 
-          <TextInput
-            style={styles.input}
-            placeholder="Type to search..."
-            value={inputValue}
-            onChangeText={handleSearch}
-          />
+            <TextInput
+              style={styles.input}
+              placeholder="Type to search..."
+              value={inputValue}
+              onChangeText={handleSearch}
+            />
 
-          {loading && <Text style={styles.loadingText}>Loading...</Text>}
-          {data && <Text style={styles.resultText}>{data}</Text>}
-        </ThemedView>
+            {loading && <Text style={styles.loadingText}>Loading...</Text>}
+            {data && <Text style={styles.resultText}>{data}</Text>}
+          </ThemedView>
 
-        {/* SECTION 6: Common Patterns */}
-        <ThemedView style={styles.lessonBox}>
-          <ThemedText type="subtitle">6. Common Hook Patterns</ThemedText>
+          {/* SECTION 6: Common Patterns */}
+          <ThemedView style={styles.lessonBox}>
+            <ThemedText type="subtitle">6. Common Hook Patterns</ThemedText>
 
-          <View style={styles.pattern}>
-            <Text style={styles.patternTitle}>Pattern 1: Fetch Data on Mount</Text>
-            <Text style={styles.patternCode}>
-{`useEffect(() => {
+            <View style={styles.pattern}>
+              <Text style={styles.patternTitle}>
+                Pattern 1: Fetch Data on Mount
+              </Text>
+              <Text style={styles.patternCode}>
+                {`useEffect(() => {
   fetchData();
 }, []);`}
-            </Text>
-          </View>
+              </Text>
+            </View>
 
-          <View style={styles.pattern}>
-            <Text style={styles.patternTitle}>Pattern 2: React to Prop Change</Text>
-            <Text style={styles.patternCode}>
-{`useEffect(() => {
+            <View style={styles.pattern}>
+              <Text style={styles.patternTitle}>
+                Pattern 2: React to Prop Change
+              </Text>
+              <Text style={styles.patternCode}>
+                {`useEffect(() => {
   handlePropChange();
 }, [prop]);`}
-            </Text>
-          </View>
+              </Text>
+            </View>
 
-          <View style={styles.pattern}>
-            <Text style={styles.patternTitle}>Pattern 3: Cleanup on Unmount</Text>
-            <Text style={styles.patternCode}>
-{`useEffect(() => {
+            <View style={styles.pattern}>
+              <Text style={styles.patternTitle}>
+                Pattern 3: Cleanup on Unmount
+              </Text>
+              <Text style={styles.patternCode}>
+                {`useEffect(() => {
   setupListener();
   return () => removeListener();
 }, []);`}
-            </Text>
-          </View>
-        </ThemedView>
+              </Text>
+            </View>
+          </ThemedView>
 
-        <ThemedText style={styles.footer}>
-          💡 Key Takeaway: Hooks let you use React features in functional components!
-        </ThemedText>
-      </ThemedView>
-    </ScrollView>
+          <ThemedText style={styles.footer}>
+            💡 Key Takeaway: Hooks let you use React features in functional
+            components!
+          </ThemedText>
+        </ThemedView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     padding: 16,
@@ -255,99 +279,99 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#E0E0E0',
+    borderColor: "#E0E0E0",
     gap: 8,
   },
   button: {
-    backgroundColor: '#2196F3',
+    backgroundColor: "#2196F3",
     padding: 12,
     borderRadius: 8,
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 8,
   },
   buttonActive: {
-    backgroundColor: '#FF6B6B',
+    backgroundColor: "#FF6B6B",
   },
   buttonText: {
-    color: '#FFFFFF',
-    fontWeight: '600',
+    color: "#FFFFFF",
+    fontWeight: "600",
   },
   buttonSmall: {
-    backgroundColor: '#2196F3',
+    backgroundColor: "#2196F3",
     paddingHorizontal: 12,
     paddingVertical: 8,
     borderRadius: 4,
     minWidth: 50,
-    alignItems: 'center',
+    alignItems: "center",
   },
   buttonRow: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 8,
     marginTop: 8,
   },
   timerDisplay: {
-    backgroundColor: '#F0F0F0',
+    backgroundColor: "#F0F0F0",
     padding: 20,
     borderRadius: 8,
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 8,
   },
   timerText: {
     fontSize: 48,
-    fontWeight: 'bold',
-    color: '#FF6B6B',
+    fontWeight: "bold",
+    color: "#FF6B6B",
   },
   input: {
     borderWidth: 1,
-    borderColor: '#CCCCCC',
+    borderColor: "#CCCCCC",
     borderRadius: 8,
     paddingHorizontal: 12,
     paddingVertical: 10,
     marginTop: 8,
-    backgroundColor: '#FAFAFA',
+    backgroundColor: "#FAFAFA",
   },
   loadingText: {
     marginTop: 8,
     fontSize: 14,
-    color: '#666666',
-    fontStyle: 'italic',
+    color: "#666666",
+    fontStyle: "italic",
   },
   resultText: {
     marginTop: 8,
     padding: 12,
-    backgroundColor: '#E8F5E9',
+    backgroundColor: "#E8F5E9",
     borderRadius: 4,
-    color: '#2E7D32',
-    fontWeight: '500',
+    color: "#2E7D32",
+    fontWeight: "500",
   },
   note: {
     marginTop: 8,
     padding: 12,
-    backgroundColor: '#FFF9C4',
+    backgroundColor: "#FFF9C4",
     borderRadius: 4,
     fontSize: 12,
   },
   info: {
     marginTop: 8,
     padding: 12,
-    backgroundColor: '#E3F2FD',
+    backgroundColor: "#E3F2FD",
     borderRadius: 4,
     fontSize: 12,
-    color: '#1565C0',
+    color: "#1565C0",
   },
   pattern: {
     marginTop: 8,
     paddingLeft: 12,
   },
   patternTitle: {
-    fontWeight: '600',
+    fontWeight: "600",
     fontSize: 13,
     marginBottom: 4,
   },
   patternCode: {
-    fontFamily: 'monospace',
+    fontFamily: "monospace",
     fontSize: 11,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: "#F5F5F5",
     padding: 8,
     borderRadius: 4,
     lineHeight: 18,
@@ -355,7 +379,7 @@ const styles = StyleSheet.create({
   footer: {
     marginTop: 12,
     padding: 12,
-    backgroundColor: '#FFF9C4',
+    backgroundColor: "#FFF9C4",
     borderRadius: 4,
     fontSize: 12,
   },
