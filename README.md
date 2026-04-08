@@ -9,10 +9,10 @@ This project includes comprehensive tutorials covering React Native frontend dev
 3. **Hooks & Effects** - Deep dive into useEffect and other custom hooks
 4. **Lists & Performance** - Render efficient lists with FlatList and optimization techniques
 5. **Navigation** - Navigate between screens with Expo Router
+6. **Networking & API Integration** - HTTP requests, fetch patterns, and data management
 
 ### Advanced Topics (Coming Soon)
 
-- **Networking & API Integration** - HTTP requests, fetch patterns, and data management
 - **Forms & Validation** - Form handling, input validation, and user input patterns
 - **Storage & Persistence** - AsyncStorage, local data persistence, and state persistence
 - **Mobile Features** - Camera, photo library, permissions, location, and push notifications
